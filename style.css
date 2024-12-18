@@ -1,0 +1,237 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #f4f4f4, #e9ecef);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Climate Container */
+.climate-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 90vmin;
+    height: 50vmin;
+}
+
+/* Climate Scene */
+.climate-scene {
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* Southern Hemisphere Summer Beach */
+.southern-summer {
+    background: linear-gradient(
+        135deg, 
+        #87CEEB 0%, 
+        #4169E1 50%, 
+        #1E90FF 100%
+    );
+}
+
+.beach-shape {
+    position: absolute;
+    background-color: #FFD700;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+}
+
+@keyframes wave {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.beach-shape {
+  animation: wave 2s infinite ease-in-out;
+}
+
+/* Cloud Styles */
+.cloud {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: cloud-drift 15s linear infinite;
+}
+
+.cloud1 {
+    width: 80px;
+    height: 40px;
+    top: 10%;
+    left: 20%;
+    background: radial-gradient(circle at 50% 50%, #ffffff 60%, rgba(255, 255, 255, 0) 100%);
+    animation-delay: 2s;
+    clip-path: polygon(
+        10% 60%, 20% 50%, 30% 40%, 40% 50%, 50% 30%,
+        60% 45%, 70% 30%, 80% 40%, 85% 50%, 90% 60%,
+        85% 70%, 75% 75%, 65% 70%, 55% 80%, 45% 70%,
+        35% 85%, 25% 75%, 15% 80%, 10% 60%
+    );
+}
+
+.cloud2 {
+    width: 60px;
+    height: 30px;
+    top: 5%;
+    left: 50%;
+    animation-delay: 3s;
+    clip-path: polygon(
+        5% 65%, 15% 55%, 25% 50%, 35% 45%, 50% 50%,
+        65% 40%, 75% 50%, 85% 45%, 95% 55%, 90% 65%,
+        80% 70%, 70% 60%, 60% 75%, 50% 65%, 40% 80%,
+        30% 70%, 20% 80%, 10% 75%, 5% 65%
+    );
+}
+
+.cloud3 {
+    width: 100px;
+    height: 50px;
+    top: 15%;
+    left: 80%;
+    animation-delay: 4s; /* Stagger animation start */
+    clip-path: polygon(
+        10% 60%, 20% 50%, 30% 40%, 40% 50%, 50% 30%,
+        60% 45%, 70% 30%, 80% 40%, 85% 50%, 90% 60%,
+        85% 70%, 75% 75%, 65% 70%, 55% 80%, 45% 70%,
+        35% 85%, 25% 75%, 15% 80%, 10% 60%
+    );
+}
+
+@keyframes cloud-drift {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(100%) }
+}
+
+/* Sun Styles */
+.sun {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 50px;
+    height: 50px;
+    background-color: #FF4500;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #FF4500;
+    animation: sun-glow 2s infinite ease-in-out;
+}
+
+@keyframes sun-glow {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(1.05); /* Slight increase in size */
+      opacity: 0.9; /* Slight decrease in opacity */
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+/* Northern Hemisphere Winter */
+.northern-winter {
+    background: linear-gradient(
+        to bottom, 
+        #E6F3FF 0%, 
+        #B0E0E6 50%, 
+        #87CEEB 100%
+    );
+}
+
+.snow-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: white;
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+}
+
+.snowflake {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: snowfall 8s linear infinite;
+    filter: blur(1px);
+}
+
+.snowflake:nth-child(2n) {
+    width: 3px; /* Larger snowflakes */
+    height: 3px;
+    filter: blur(1.5px);
+    opacity: 0.8;
+}
+
+.snowflake:nth-child(3n) {
+    width: 1px; /* Smaller snowflakes */
+    height: 1px;
+    filter: blur(0.5px);
+    opacity: 0.6;
+}
+
+@keyframes snowfall {
+  0% { 
+      transform: translateY(-100%) rotate(0deg);
+  }
+  100% { 
+      transform: translateY(120vh) rotate(360deg);
+  }
+}
+
+/* Temperature Visualization */
+.temperature-viz {
+    background: linear-gradient(
+        to right, 
+        #1E90FF 0%, 
+        #FF6347 100%
+    );
+    display: flex;
+    align-items: flex-end;
+}
+
+.temp-bar {
+    width: 33.33%;
+    background-color: rgba(255,255,255,0.3);
+    transition: height 0.5s ease;
+    position: relative;
+}
+
+.temp-bar:nth-child(1) {background-color: #1E90FF;}
+.temp-bar:nth-child(2) {background-color: #FFFF00;}
+.temp-bar:nth-child(3) {background-color: #FF6347;}
+
+.temp-label {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 12px;
+    z-index: 2;
+}
+
+/* Hover Effects */
+.climate-scene:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
